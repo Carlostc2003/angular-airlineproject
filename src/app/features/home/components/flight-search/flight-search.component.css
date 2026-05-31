@@ -1,0 +1,179 @@
+#booking {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#booking .tabs {
+  width: 1060px;
+  position: relative;
+  bottom: 150px;
+  z-index: 10;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+#booking .tabs > input {
+  display: none;
+}
+
+#booking .tab-buttons {
+  display: flex;
+  margin-bottom: 20px;
+  margin-top: -15px;
+  gap: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+}
+
+#booking .tab-contents .tab-content {
+  display: none;
+  border-top: none;
+  padding: 20px;
+}
+
+#booking .search-flights {
+  width: 100%;
+  height: 80px;
+  background: #ffffff;
+  border-top: 1px solid rgba(0, 0, 0, 0.14);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#booking .search-flights a:first-child {
+  margin-top: 15px;
+  color: #00803e;
+  cursor: pointer;
+  padding-left: 28px;
+  padding-top: 5px;
+  background-image: url("data:image/svg+xml,%3Csvg width='800px' height='800px' viewBox='0 -0.5 21 21' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.05,9 L15.2,9 L15.2,11 L12.05,11 L12.05,14 L9.95,14 L9.95,11 L6.8,11 L6.8,9 L9.95,9 L9.95,6 L12.05,6 L12.05,9 Z M11,18 C6.36845,18 2.6,14.411 2.6,10 C2.6,5.589 6.36845,2 11,2 C15.63155,2 19.4,5.589 19.4,10 C19.4,14.411 15.63155,18 11,18 Z M11,0 C5.20085,0 0.5,4.477 0.5,10 C0.5,15.523 5.20085,20 11,20 C16.79915,20 21.5,15.523 21.5,10 C21.5,4.477 16.79915,0 11,0 Z' fill='%2300803E'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: left;
+}
+
+#booking .search-flights button {
+  border: none;
+  transition: background-color 0.3s;
+  color: #FFFFFF;
+  cursor: pointer;
+  padding: 0 20px 0 50px;
+  background-color: #00803e;
+  border-radius: 4px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 17C13.866 17 17 13.866 17 10C17 6.13401 13.866 3 10 3C6.13401 3 3 6.13401 3 10C3 13.866 6.13401 17 10 17Z' stroke='%23FFFFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M20.9992 21L14.9492 14.95' stroke='%23FFFFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 28px 28px;
+  background-position: 15px center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  height: 60px;
+  margin-top: 20px;
+}
+
+#booking .search-flights button:hover {
+  background-color: #026634;
+}
+
+#booking .tab-buttons button {
+  color: #6a6a6a;
+  width: auto;
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px 5px 0 0;
+  transition: background 0.3s;
+  border-width: 0 0 3px 0;
+  border-color: transparent;
+  background: transparent;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+#booking .tab-buttons button:hover {
+  border-bottom: 3px solid #cccccc;
+  cursor: pointer;
+}
+
+#booking .tab-buttons button.active {
+  border-bottom: 3px solid #00803e;
+  width: auto;
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px 5px 0 0;
+  color: #040404;
+}
+
+#booking .tab-buttons button.active:hover {
+  cursor: initial;
+}
+
+#booking .type-of-booking {
+  display: flex;
+  gap: 30px;
+  color: #4d4d4d;
+  font-size: 1.2rem;
+  margin-top: -15px;
+  margin-bottom: 10px;
+}
+
+#booking .type-of-booking input {
+  margin-right: 10px;
+}
+
+#booking .type-of-booking input[type="radio"] {
+  transform: scale(1.5);
+}
+
+#booking .type-of-booking label:hover {
+  cursor: pointer;
+}
+
+#booking .location-booking {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#booking .location-booking svg {
+  border-radius: 50%;
+  padding: 10px;
+  fill: #555555;
+  margin: 10px 21px;
+  width: 50px;
+  height: 50px;
+}
+
+#booking .location-booking svg:hover {
+  background-color: #e5f3ec;
+  cursor: pointer;
+}
+
+#booking .form {
+  padding: 20px;
+}
+
+#booking .location-booking app-input {
+  flex: 1;
+}
+
+#booking .booking-dates {
+  display: flex;
+  flex-direction: row;
+  gap: 91px
+}
+
+#booking .booking-dates * {
+  width: 100% !important;
+}
+
+.search-flights .btn-search-flights:disabled {
+  background-color: #a3debc !important;
+  color: #ffffff !important;
+  cursor: not-allowed !important;
+}

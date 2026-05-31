@@ -1,0 +1,10 @@
+@if (!loading()) {
+  <div class="airports-list" [class.active]="isOpen()">
+    @for (a of airports(); track a.airport_code) {
+      <div class="airport" (click)="selectAirport(a)">
+        <p class="city-airport">{{ a.city_airport }}</p>
+        <span class="airport-code">{{ a.airport_code }}</span>
+      </div>
+    }
+  </div>
+}

@@ -1,0 +1,26 @@
+# Dependencias de Node (se recuperan con 'npm install')
+node_modules/
+
+# Carpetas de producción y compilación
+dist/
+.angular/
+
+# Logs de error de npm y herramientas del sistema
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Configuración local de IDEs y editores de código
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Archivos temporales del sistema operativo
+Thumbs.db
+.DS_Store

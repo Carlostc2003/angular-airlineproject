@@ -1,0 +1,130 @@
+
+.date-picker-round-trip .mat-mdc-form-field-flex {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-picker-round-trip .mdc-notched-outline {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.booking-dates * {
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: var(--appfont), system-ui;
+}
+
+.date-picker-round-trip .mat-date-range-input-container {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.date-picker-round-trip .mat-date-range-input-wrapper {
+  flex: 1;
+  height: 80px;
+  border-radius: 3px;
+}
+
+.date-picker-round-trip .mat-start-date {
+  color: #000000;
+  padding: 20px !important;
+  height: 100%;
+  border-radius: 3px;
+  font-size: 1.3rem;
+  background: #f2f2f2;
+}
+
+.date-picker-round-trip .mat-end-date {
+  color: #000000;
+  background: #f2f2f2;
+  padding: 20px !important;
+  height: 100%;
+  border-radius: 3px;
+  font-size: 1.3rem;
+}
+
+.date-picker-round-trip .mat-start-date:hover, .date-picker-round-trip .mat-end-date:hover {
+  cursor: pointer;
+  background: #ffffff;
+}
+
+.mat-date-range-input-wrapper:hover {
+  outline: 3px solid #00803e;
+}
+
+.date-picker-round-trip .mat-start-date::placeholder, .date-picker-round-trip .mat-end-date::placeholder {
+  color: #858585;
+}
+
+.mat-mdc-form-field-icon-suffix {
+  display: none !important;
+}
+
+.custom-picker-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 35px;
+  height: 35px;
+  fill: #a0a0a0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.date-picker-round-trip .icon-departure {
+  left: calc(40% - 25px);
+}
+
+.date-picker-round-trip .icon-arrival {
+  right: 20px;
+}
+
+.date-picker-round-trip .custom-picker-icon:hover {
+  cursor: pointer;
+}
+
+.date-picker-round-trip .mat-date-range-input:has(.mat-date-range-input-wrapper:not(.mat-date-range-input-end-wrapper):hover) ~ .icon-departure {
+  fill: #00803e;
+}
+
+.date-picker-round-trip .mat-date-range-input:has(.mat-date-range-input-end-wrapper:hover) ~ .icon-arrival {
+  fill: #00803e;
+}
+
+.date-picker-one-way {
+  background: #f2f2f2;
+  height: 80px;
+  border-radius: 3px;
+  font-size: 1.3rem;
+  padding: 5px 20px !important;
+}
+
+.date-picker-one-way:hover {
+  background: #ffffff;
+}
+
+.date-picker-one-way *::placeholder {
+  color: #858585 !important;
+}
+
+.date-picker-one-way .icon-date {
+  left: calc(100% - 35px);
+}
+
+.date-picker-one-way:hover .custom-picker-icon {
+  fill: #00803e !important;
+}
+
+.date-picker-one-way:hover .custom-picker-icon use {
+  fill: #00803e !important;
+}
+
+.date-picker-one-way, .date-picker-round-trip {
+ width: 100%;
+}

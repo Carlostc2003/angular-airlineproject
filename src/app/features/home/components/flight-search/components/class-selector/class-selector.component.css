@@ -1,0 +1,106 @@
+.class-selector {
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  padding: 20px !important;
+  gap: 20px;
+  height: 80px;
+  justify-content: space-between;
+  border-radius: 3px;
+}
+
+.btn-class-selector {
+  font-size: 1.3rem;
+  background: transparent;
+}
+
+.svg-class-selector {
+  width: 30px;
+  fill: #a0a0a0;
+}
+
+.class-selector:hover .svg-class-selector {
+  fill: #00803e;
+}
+
+.class-selector:hover {
+  cursor: pointer;
+  outline: 3px solid #00803e;
+  background: white;
+}
+
+.btn-class-selector:hover {
+  cursor: pointer;
+}
+
+.class-selector.is-active .svg-class-selector {
+  fill: #00803e;
+}
+
+.class-selector.is-active {
+  outline: 3px solid #00803e;
+  background: white;
+}
+
+.menu-class-selector {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background: #ffffff;
+  padding: 20px !important;
+  gap: 10px;
+  box-shadow: 0 0 3px rgb(0 0 0 / 0.4);
+  border-radius: 3px;
+  top: 321px;
+  width: 445px;
+}
+
+.title-selector {
+  font-size: 0.8rem;
+  color: #555555;
+  margin-bottom: 5px !important;
+}
+
+.title-selector.passengers {
+  margin-bottom: 15px !important;
+}
+
+.fieldset-selector.passengers {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  padding-bottom: 20px !important;
+  border-bottom: 1px solid #e5e5e5 !important;
+  margin-bottom: 15px !important;
+}
+
+.container-class-selector {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px 10px 10px !important;
+  border-radius: 3px;
+  margin: 0 -8px 0 -10px !important;
+}
+
+.class-label-selector {
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.container-class-selector:hover {
+  cursor: pointer;
+  background: #e5f3ec;
+  color: #00805c;
+}
+
+.class-input-selector {
+  transform: scale(1.5);
+  transition: accent-color 0.2s;
+  cursor: pointer;
+}
+
+.container-class-selector:hover .class-input-selector {
+  accent-color: #0d7233;
+}
+

@@ -1,0 +1,82 @@
+<section id="booking">
+  <div class="tabs">
+    <div class="tab-buttons">
+      @let tabs = [
+        { id: 'booking', label: 'Reservar' },
+        { id: 'checkin', label: 'Check-in' },
+        { id: 'manage',  label: 'Gestionar' }
+      ];
+
+      @for (tab of tabs; track tab.id) {
+        <button type="button" (click)="changeTab(tab.id)" [class.active]="currentTab() === tab.id">
+          {{ tab.label }}
+        </button>
+      }
+    </div>
+
+    @switch (currentTab()) {
+      @case ('booking') {
+        <form [formGroup]="bookingForm" class="form">
+          <div class="type-of-booking">
+            <label for="ida-vuelta"><input type="radio" name="tab" id="ida-vuelta" (click)="tripType.set('round trip')" [checked]="tripType() === 'round trip'">ida y vuelta</label>
+            <label for="ida"><input type="radio" name="tab" id="ida" (click)="tripType.set('one way')" [checked]="tripType() === 'one way'">Solo ida</label>
+          </div>
+          <div class="location-booking">
+            <app-input formControlName="departure" svg="departure" placeholder="Desde"></app-input>
+            <app-airports-list (onSelectAirport)="handleAirportSelection($event)"></app-airports-list>
+            <svg (click)="swapAirports()"><use href="assets/svg/sprite.svg#swap"></use></svg>
+            <app-input formControlName="arrival" svg="arrival" placeholder="Hasta"></app-input>
+          </div>
+          <div class="booking-dates">
+            @switch (tripType()) {
+              @case ('round trip') {
+                <app-calendar formControlName="calendar" [type]="tripType()"></app-calendar>
+              }
+              @case ('one way') {
+                <app-calendar formControlName="calendar" [type]="tripType()" class="date-one-way"></app-calendar>
+              }
+            }
+            <app-class-selector formControlName="classAndPassengers"></app-class-selector>
+          </div>
+        </form>
+      }
+
+      @case ('checkin') {
+        <form [formGroup]="checkinForm">
+          <div class="check-in-booking">
+            <label for="code">
+              <input type="text" id="code" placeholder=" " required>
+              <span>Número de reserva</span>
+            </label>
+            <label for="surname">
+              <input type="text" id="surname" placeholder=" " required>
+              <span>Apellidos</span>
+            </label>
+          </div>
+        </form>
+      }
+
+      @case ('manage') {
+        <form [formGroup]="manageForm">
+          <div class="check-in-booking">
+            <label for="manage-code">
+              <input type="text" id="manage-code" placeholder=" " required>
+              <span>Número de referencia</span>
+            </label>
+            <label for="manage-surname">
+              <input type="text" id="manage-surname" placeholder=" " required>
+              <span>Apellidos</span>
+            </label>
+          </div>
+        </form>
+      }
+    }
+
+    <div class="tab-contents">
+      <div class="search-flights">
+        <a>Añadir código promocional</a>
+        <button type="button" (click)="printSelection()" [disabled]="isSearchDisabled()" class="btn-search-flights">Buscar Vuelos</button>
+      </div>
+    </div>
+  </div>
+</section>

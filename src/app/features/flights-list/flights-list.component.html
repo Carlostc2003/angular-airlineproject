@@ -1,0 +1,68 @@
+<div class="flights-container">
+  @if (loading()) {
+    <div class="loading-screen">
+      <div class="spinner"></div>
+      <p>Buscando los mejores vuelos disponibles en Ilicitan Airlines...</p>
+    </div>
+  } @else {
+    @let isOutbound = currentStep() === 'outbound';
+    @let flights = isOutbound ? outboundFlights() : inboundFlights();
+
+    @if (flights.length === 0) {
+      <div class="no-flights-screen">
+        <div class="no-flights-icon">✈️</div>
+        <h3>{{ isOutbound ? 'No hay vuelos disponibles' : 'No hay vuelos de vuelta disponibles' }}</h3>
+        <p>
+          {{ isOutbound
+          ? 'No encontramos opciones de ida para el día seleccionado con suficientes asientos en clase ' + (seatClass() | titlecase) + '.'
+          : 'No encontramos opciones para regresar el día seleccionado con los criterios actuales.'
+          }}
+        </p>
+      </div>
+    } @else {
+      <app-flight-banner [cityArr]="isOutbound ? arrival() : departure()" [cityDep]="isOutbound ? departure() : arrival()"></app-flight-banner>
+      <div class="filter-container"></div>
+
+      <div class="flights-list">
+        @for (flight of flights; track flight.id) {
+          <div class="flight-card" [class.inbound]="!isOutbound">
+            <div class="decoration">
+              <svg class="type">
+                <use [attr.href]="'./assets/svg/sprite.svg#' + (isOutbound ? 'departure' : 'arrival')"></use>
+              </svg>
+            </div>
+
+            <div class="timeline">
+              <div class="time-block">
+                <span class="time">{{ flight.departure.date | date:'HH:mm' }}</span>
+                <span class="airport">{{ flight.departure.airport_code }}</span>
+              </div>
+
+              <div class="duration-block">
+                <span class="duration-text">Directo · {{ flight.duration }} min</span>
+                <div class="line-plane"></div>
+                <span class="flight-code">{{ flight.flightId }}</span>
+              </div>
+
+              <div class="time-block">
+                <span class="time">{{ flight.arrival.date | date:'HH:mm' }}</span>
+                <span class="airport">{{ flight.arrival.airport_code }}</span>
+              </div>
+            </div>
+
+            <div class="flight-action-zone">
+              <span class="class-label">{{ seatClass() | titlecase }}</span>
+              <span class="price">{{ flight.prices[seatClass()!.toLowerCase()] | number:'1.2-2' }} €</span>
+
+              @if (isOutbound) {
+                <button class="btn-select" (click)="selectOutbound(flight)">Confirmar ida</button>
+              } @else {
+                <button class="btn-select return" (click)="selectInbound(flight)">Confirmar vuelta</button>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    }
+  }
+</div>

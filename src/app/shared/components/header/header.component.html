@@ -1,0 +1,24 @@
+<header id="header">
+  <div class="logo">
+    <a routerLink="/">
+      <img ngSrc="../../../../assets/logo/logo-white-text.png" alt="Logo de Ilicitan Airlines - Book Flights" width="175" height="60">
+    </a>
+  </div>
+
+  <div class="menu">
+    <ul>
+      <li><a routerLink="">Inicio</a></li>
+      <li><a routerLink="/explore">Explorar</a></li>
+      <li><a routerLink="/check-in">Check-in</a></li>
+      <li><a routerLink="/booking">Reservar</a></li>
+      <li><a routerLink="/fidelity">Fidelidad</a></li>
+      <li><a routerLink="/help">Ayuda</a></li>
+    </ul>
+  </div>
+
+  <div class="login">
+    <a routerLink="/login">Acceso</a>
+  </div>
+</header>
+
+@if (showStartServer) {<app-loading-screen></app-loading-screen>}

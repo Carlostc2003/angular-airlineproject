@@ -1,0 +1,25 @@
+<div [style.width]="width() ? width() : null" [style.height]="height() ? height() : null">
+  <input
+    [type]="type()"
+    [placeholder]="placeholder()"
+    [style.font-size]="fontSize()"
+    [value]="value()"
+    [disabled]="isDisabled()"
+    (input)="handleInput($event)"
+    (blur)="handleBlur()"
+    required
+  >
+
+  @if (text()) {
+    <button class="btn" type="button">
+      <svg class="icon">
+        <use [attr.href]="'assets/svg/sprite.svg#' + svg()"></use>
+      </svg>
+      <p class="text" [style.font-size]="fontSize()">{{ text() }}</p>
+    </button>
+  } @else if (svg()) {
+    <svg class="icon">
+      <use [attr.href]="'assets/svg/sprite.svg#' + svg()"></use>
+    </svg>
+  }
+</div>

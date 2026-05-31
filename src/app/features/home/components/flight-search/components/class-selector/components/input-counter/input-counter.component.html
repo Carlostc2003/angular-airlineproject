@@ -1,0 +1,13 @@
+@let name = label().toLowerCase().replaceAll(" ", "-");
+
+<div class="passenger">
+  <div class="text-selector">
+    <label [attr.for]="name" class="label-selector">{{ label() }}</label>
+    <p class="p-selector">{{ sublabel() }}</p>
+  </div>
+  <div class="container-selector">
+    <button type="button" class="btn-selector decrement" (click)="decrement()" [disabled]="count() === minLimit()"><p>-</p></button>
+    <input [id]="name" type="number" class="input-selector number" [value]="count()" readonly/>
+    <button type="button" class="btn-selector increment" (click)="increment()" [disabled]="isMaxLimit()"><p>+</p> </button>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+.airports-list {
+  background: transparent;
+  max-height: 250px;
+  position: absolute;
+  width: 42.5%;
+  top: 221px;
+  left: 39px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgb(37 37 37 / 0.32);
+  z-index: 1;
+}
+
+.airport {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  padding: 5px 10px;
+  background: white;
+  color: black;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.city-airport {
+  width: 70%;
+  color: #555555;
+}
+
+.airport-code {
+  width: 30%;
+  text-align: center;
+  background: #00803e;
+  color: white;
+  padding: 10px;
+  border-radius: 2px;
+}
+
+.airport:nth-child(even) {
+  background: #f1f1f1;
+}
+
+
+
+.airport:hover {
+  cursor: pointer;
+  background: #d2e6db;
+}
+
+.airport:hover .city-airport {
+  color: #00803e;
+}
+
+.airports-list {
+  display: none;
+}
+
+.airports-list.active {
+  display: block;
+}

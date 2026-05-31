@@ -1,0 +1,50 @@
+<div class="class-selector" (click)="showClassSelector()" [class.is-active]="show()">
+  <button class="btn-class-selector">
+    {{ totalPassengers() === 1 ? '1 Passenger' : totalPassengers() + ' Passengers' }}{{ ", " + nameClass() }}
+  </button>
+  <svg class="svg-class-selector">
+    <use [attr.href]="'assets/svg/sprite.svg#' + (show() ? 'arrow-up' : 'arrow-down')"></use>
+  </svg>
+</div>
+
+@if (show()) {
+  <div class="menu-class-selector">
+    <form class="form-class-selector passengers">
+      <fieldset class="fieldset-selector passengers">
+        <legend class="title-selector passengers">Passengers</legend>
+
+        @let passenger = [
+          { name: 'Adults No', sublabel: '12 years and up', min: 1, signal: adults },
+          { name: 'Children', sublabel: 'Ages 2-11', min: 0, signal: children },
+          { name: 'Infants', sublabel: 'Below 2 years', min: 0, signal: infants }
+        ];
+
+        @for (type of passenger; track type.name) {
+          <app-input-counter
+            [label]="type.name" [sublabel]="type.sublabel" [count]="type.signal()"
+            [minLimit]="type.min" [isMaxLimit]="isMaxReached()" (onCountChange)="type.signal.set($event)">
+          </app-input-counter>
+        }
+      </fieldset>
+    </form>
+
+    <form class="form-class-selector class">
+      <fieldset class="class-fieldset class">
+        <legend class="title-selector class">Class</legend>
+
+        @let classes = ['Economy', 'XXL', 'Business'];
+
+        @for (name of classes; track name) {
+          @let value = name.toLowerCase().replaceAll(" ", "-");
+          <div class="container-class-selector" (click)="radio.click()">
+            <label class="class-label-selector" [attr.for]="value">{{ name }}</label>
+            <input
+              #radio [id]="value" class="class-input-selector" type="radio" name="class"
+              [value]="name" [checked]="nameClass() === name" (change)="nameClass.set(name)"
+            >
+          </div>
+        }
+      </fieldset>
+    </form>
+  </div>
+}

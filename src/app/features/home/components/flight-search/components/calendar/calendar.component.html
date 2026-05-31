@@ -1,0 +1,23 @@
+@if (type() === "round trip") {
+  <mat-form-field appearance="outline" class="date-picker-round-trip" (click)="picker.open()" [formGroup]="internalForm">
+    <mat-date-range-input [rangePicker]="picker" [min]="today" [max]="maxDate" separator="">
+      <input matStartDate formControlName="start" placeholder="Salida" class="date-input" readonly (keydown)="$event.preventDefault()" required>
+      <input matEndDate formControlName="end" placeholder="Llegada" class="date-input" readonly (keydown)="$event.preventDefault()" required>
+    </mat-date-range-input>
+
+    <svg class="custom-picker-icon icon-departure"><use href="assets/svg/sprite.svg#calendar"></use></svg>
+    <svg class="custom-picker-icon icon-arrival"><use href="assets/svg/sprite.svg#calendar"></use></svg>
+
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker panelClass="custom-flight-calendar" [dateClass]="dateClass"></mat-date-range-picker>
+  </mat-form-field>
+} @else if (type() === "one way") {
+  <mat-form-field appearance="outline" class="date-picker-one-way" (click)="picker.open()" [formGroup]="internalForm">
+    <input matInput formControlName="start" [matDatepicker]="picker" [min]="today" [max]="maxDate" placeholder="Salida" class="date-input" readonly (keydown)="$event.preventDefault()">
+
+    <svg class="custom-picker-icon icon-date"><use href="assets/svg/sprite.svg#calendar"></use></svg>
+
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker panelClass="custom-flight-calendar" [dateClass]="dateClass"></mat-datepicker>
+  </mat-form-field>
+}

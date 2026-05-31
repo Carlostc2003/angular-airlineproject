@@ -1,0 +1,12 @@
+#footer {width: 100%; height: 500px; display: flex; background-color: white; align-items: center; justify-content: center}
+#footer .limit {display: flex; align-items: center; justify-content: space-between; width: 1060px; height: 80%; background: rgba(255, 255, 255, 0); gap: 20px;}
+#footer .airline {display: flex; flex-direction: column; height: 100%; justify-content: space-between;}
+#footer .airline > img {height: auto; width: 300px;}
+#footer .airline .download {display: flex; flex-direction: column; gap: 20px;}
+#footer .airline .download .download-buttons {display: flex; gap: 10px; flex-direction: column;}
+#footer .airline .download .download-buttons a {width: 0;}
+#footer .airlines .download h4 {color: #4c4c4c;}
+#footer .links {display: flex; flex-direction: column; height: 100%; flex-wrap: wrap; gap: 20px;}
+#footer .links ul {list-style: none; display: flex; flex-direction: column; gap: 7px;}
+#footer .links ul li a {text-decoration: none; color: gray; font-size: 0.8rem;}
+#footer .links ul li a:hover {text-decoration: underline; color: #00803e; font-family: Ilicitan, sans-serif; }

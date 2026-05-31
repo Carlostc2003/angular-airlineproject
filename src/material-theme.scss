@@ -1,0 +1,170 @@
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+  @include mat.theme (
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+body {
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+  margin: 0;
+  height: 100%;
+}
+
+.custom-flight-calendar {
+  @include mat.datepicker-overrides((
+    calendar-container-shape: 8px,
+    calendar-date-selected-state-background-color: #00803e,
+    calendar-date-selected-state-text-color: #ffffff,
+    calendar-date-hover-state-background-color: rgba(0, 128, 62, 0.1),
+    calendar-date-in-range-state-background-color: rgba(0, 128, 62, 0.08),
+    calendar-header-divider-color: #555555,
+    calendar-date-today-outline-color: transparent !important,
+    calendar-date-today-selected-state-outline-color: transparent !important,
+    calendar-date-preview-state-outline-color: transparent !important
+  ));
+}
+
+.custom-flight-calendar .past-day .mat-calendar-body-cell-content {
+  color: #b0b0b0 !important;
+  background-color: #f9f9f9 !important;
+}
+
+.custom-flight-calendar {
+  background-color: #ffffff;
+  border-radius: 5px;
+  width: 400px !important;
+  height: 100% !important;
+  color: white;
+  border: 3px solid #555555;
+}
+
+.custom-flight-calendar .mat-calendar-body-in-preview::before {
+  background: rgba(6, 114, 55, 0.18) !important;
+}
+
+.custom-flight-calendar .mat-calendar-body-preview-start .mat-calendar-body-cell-content {
+  background-color: #00803e !important;
+  color: #ffffff !important;
+  border-radius: 50% !important;
+}
+
+.custom-flight-calendar .mat-calendar-body-preview-end .mat-calendar-body-cell-content {
+  background-color: #00803e !important;
+  color: #ffffff !important;
+  border-radius: 50% !important;
+}
+
+.custom-flight-calendar .mat-calendar-body-preview-start::before {
+  border-top-left-radius: 50% !important;
+  border-bottom-left-radius: 50% !important;
+}
+
+.custom-flight-calendar .mat-calendar-body-preview-end::before {
+  border-top-right-radius: 50% !important;
+  border-bottom-right-radius: 50% !important;
+  width: 50px;
+}
+
+.custom-flight-calendar .mat-calendar-body-range-start {
+  width: 54.5px;
+}
+
+.custom-flight-calendar .mat-calendar-body-in-range::before {
+  background: #00803e !important;
+}
+
+.custom-flight-calendar .mat-calendar-body-in-range .mat-calendar-body-cell-content {
+  color: #ffffff !important;
+}
+
+.custom-flight-calendar .mat-calendar-body-in-range .mat-calendar-body-cell-content:hover {
+  background: #026634 !important;
+}
+
+.custom-flight-calendar .mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-in-range) {
+  background: #555555 !important;
+  color: #ffffff !important;
+}
+
+.custom-flight-calendar,
+.custom-flight-calendar * {
+  font-family: var(--appfont), system-ui !important;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #555555 !important;
+}
+
+.custom-flight-calendar::selection, .custom-flight-calendar *::selection {
+  background: transparent !important;
+  color: initial !important;
+}
+
+.custom-flight-calendar * {
+  border: none !important;
+}
+
+.booking-dates * {
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: var(--appfont), system-ui;
+}
+
+.mat-date-range-input-container {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 3%;
+}
+
+.mat-date-range-input-wrapper {
+  flex: 1;
+  height: 80px;
+  border-radius: 3px;
+}
+
+.mat-date-range-input-wrapper:hover {
+  outline: 3px solid #00803e;
+}
+
+.mat-mdc-form-field-icon-suffix {
+  display: none !important;
+}
+
+.date-picker-one-way .mat-mdc-form-field-infix {
+  height: 100% !important;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  text-align: center;
+}
+
+.date-picker-one-way .mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+}
+
+.date-picker-one-way .mat-mdc-text-field-wrapper {
+  align-items: center;
+}
+
+.date-one-way:hover {
+  outline: 3px solid #00803e !important;
+  cursor: pointer !important;
+  border-radius: 3px;
+}
+
+.date-one-way *:hover {
+  cursor: pointer !important;
+}
