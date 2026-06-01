@@ -16,7 +16,7 @@ export class AppComponent {
 }
 
 // URI that the entire program will use to call the backend [It is important to specify: "http://" or "https://"]
-export const uri = 'http://localhost:8080/';
+export const uri = 'https://spring-airlineproject.onrender.com/';
 
 // Maximum number of passengers per booking
 export const maxPassengers = 8;
