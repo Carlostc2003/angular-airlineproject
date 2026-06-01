@@ -1,8 +1,11 @@
 import {ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-flight-banner',
-  imports: [],
+  imports: [
+    DatePipe
+  ],
   templateUrl: './flight-banner.component.html',
   styleUrl: './flight-banner.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush

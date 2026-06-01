@@ -1,12 +1,18 @@
-<div class="banner-container" [style.background]="'url(./../assets/images/backgrounds/' + cityArr() + '-background.webp) center / cover no-repeat'">
+<div class="banner-container" [style.background]="'url(./../assets/images/backgrounds/' + cityArr() + '-background.webp) center / cover fixed no-repeat'">
   <div class="up-center-container">
     <h2 class="banner-h2">{{ isOutbound() ? 'Vuelo de ida' : 'Vuelo de vuelta' }}</h2>
-    <p class="banner-p">
-      <span class="banner-span departure">{{ cityDep() }}</span>
-      <svg class="banner-svg">
-        <use [attr.href]="'./../assets/svg/sprite.svg#' + (isOutbound() ? 'departure' : 'arrival')"></use>
-      </svg>
-      <span class="banner-span arrival">{{ cityArr() }}</span>
-    </p>
+    <div class="banner-box">
+      <div class="banner-div departure">
+        <p class="banner-p citydep city">{{ cityDep() }}</p>
+      </div>
+
+      <svg class="banner-svg"><use [attr.href]="'./../assets/svg/sprite.svg#swap'"></use></svg>
+
+      <div class="banner-div arrival">
+        <p class="banner-p cityarr city">{{ cityArr() }}</p>
+      </div>
+    </div>
+
+    <p class="banner-p datearr date">{{ (isOutbound() ? dateDep() : dateArr()) | date:'dd/MM/yy' }}</p>
   </div>
 </div>

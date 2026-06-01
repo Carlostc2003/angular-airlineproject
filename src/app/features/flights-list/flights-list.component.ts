@@ -3,10 +3,11 @@ import {ActivatedRoute, RouterModule} from '@angular/router';
 import { FlightSearchService } from '../../core/services/flight-search.service';
 import {CommonModule} from '@angular/common';
 import {FlightBannerComponent} from './components/flight-banner/flight-banner.component';
+import {MinutesToTimePipe} from '../../shared/pipes/minutes-to-time/minutes-to-time.pipe';
 
 @Component({
   selector: 'app-flights-list',
-  imports: [CommonModule, RouterModule, FlightBannerComponent],
+  imports: [CommonModule, RouterModule, FlightBannerComponent, MinutesToTimePipe],
   templateUrl: './flights-list.component.html',
   styleUrl: './flights-list.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush

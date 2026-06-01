@@ -1,27 +1,38 @@
-<div class="flights-container">
-  @if (loading()) {
-    <div class="loading-screen">
-      <div class="spinner"></div>
-      <p>Buscando los mejores vuelos disponibles en Ilicitan Airlines...</p>
+@if (loading()) {
+  <div class="loading-screen">
+    <div class="spinner"></div>
+    <p>Buscando los mejores vuelos disponibles en Ilicitan Airlines...</p>
+  </div>
+} @else {
+  @let isOutbound = currentStep() === 'outbound';
+  @let flights = isOutbound ? outboundFlights() : inboundFlights();
+
+  @if (flights.length === 0) {
+    <div class="no-flights-screen">
+      <div class="no-flights-icon">✈️</div>
+      <h3>{{ isOutbound ? 'No hay vuelos disponibles' : 'No hay vuelos de vuelta disponibles' }}</h3>
+      <p>
+        {{ isOutbound
+        ? 'No encontramos opciones de ida para el día seleccionado con suficientes asientos en clase ' + (seatClass() | titlecase) + '.'
+        : 'No encontramos opciones para regresar el día seleccionado con los criterios actuales.'
+        }}
+      </p>
     </div>
   } @else {
-    @let isOutbound = currentStep() === 'outbound';
-    @let flights = isOutbound ? outboundFlights() : inboundFlights();
+    <app-flight-banner
+      [cityArr]="isOutbound ? arrival() : departure()"
+      [cityDep]="isOutbound ? departure() : arrival()"
+      [isOutbound]="isOutbound"
+      [dateArr]="isOutbound ? startDate() : endDate()"
+      [dateDep]="isOutbound ? endDate() : startDate()"
+    ></app-flight-banner>
 
-    @if (flights.length === 0) {
-      <div class="no-flights-screen">
-        <div class="no-flights-icon">✈️</div>
-        <h3>{{ isOutbound ? 'No hay vuelos disponibles' : 'No hay vuelos de vuelta disponibles' }}</h3>
-        <p>
-          {{ isOutbound
-          ? 'No encontramos opciones de ida para el día seleccionado con suficientes asientos en clase ' + (seatClass() | titlecase) + '.'
-          : 'No encontramos opciones para regresar el día seleccionado con los criterios actuales.'
-          }}
-        </p>
+    <main class="flight-container">
+      <div class="filter-container">
+        <div class="filter-box">
+          <h3>Filtros para tu búsqueda</h3>
+        </div>
       </div>
-    } @else {
-      <app-flight-banner [cityArr]="isOutbound ? arrival() : departure()" [cityDep]="isOutbound ? departure() : arrival()"></app-flight-banner>
-      <div class="filter-container"></div>
 
       <div class="flights-list">
         @for (flight of flights; track flight.id) {
@@ -39,9 +50,9 @@
               </div>
 
               <div class="duration-block">
-                <span class="duration-text">Directo · {{ flight.duration }} min</span>
+                <span class="duration-text">Directo · {{ flight.duration | minutesToTime }}</span>
                 <div class="line-plane"></div>
-                <span class="flight-code">{{ flight.flightId }}</span>
+                <span class="flight-code">{{ flight.flightId.replaceAll("-", "") }}</span>
               </div>
 
               <div class="time-block">
@@ -52,7 +63,7 @@
 
             <div class="flight-action-zone">
               <span class="class-label">{{ seatClass() | titlecase }}</span>
-              <span class="price">{{ flight.prices[seatClass()!.toLowerCase()] | number:'1.2-2' }} €</span>
+              <span class="price">{{ flight.prices[seatClass()!.toLowerCase()] | number:'1.2-2' }}€</span>
 
               @if (isOutbound) {
                 <button class="btn-select" (click)="selectOutbound(flight)">Confirmar ida</button>
@@ -63,6 +74,56 @@
           </div>
         }
       </div>
-    }
+
+      <div class="info-container">
+        <div class="info-box">
+          <h3>Información del itinerario</h3>
+          @if (!selectedOutboundFlight()) {
+            <p class="info-p-unselected">Selecciona un vuelo de ida para ver información</p>
+          } @else {
+            @let outbound = selectedOutboundFlight();
+            <div class="separator"></div>
+            <h4 class="info-h4-selected">Vuelo de ida</h4>
+            <div class="info-div-selected">
+              <svg class="info-svg-selected"><use href="./assets/svg/sprite.svg#circle"></use></svg>
+              <p class="info-p-selected airport">{{ outbound?.departure?.airport_code }}</p>
+              <p class="info-p-selected bar">-</p>
+              <p class="info-p-selected date">{{ outbound?.departure?.date | date:"EEE, d MMM · HH:mm" }}</p>
+            </div>
+            <div class="spacer"></div>
+            <div class="info-div-selected">
+              <svg class="info-svg-selected"><use href="./assets/svg/sprite.svg#circle"></use></svg>
+              <p class="info-p-selected airport">{{ outbound?.arrival?.airport_code }}</p>
+              <p class="info-p-selected bar">-</p>
+              <p class="info-p-selected date">{{ outbound?.arrival?.date | date:"EEE, d MMM · HH:mm" }}</p>
+            </div>
+
+            @if (type() === 'round trip' && selectedInboundFlight()) {
+              @let inbound = selectedInboundFlight();
+              <div class="separator"></div>
+              <h4 class="info-h4-selected">Vuelo de vuelta</h4>
+              <div class="info-div-selected">
+                <svg class="info-svg-selected"><use href="./assets/svg/sprite.svg#circle"></use></svg>
+                <p class="info-p-selected airport">{{ inbound?.departure?.airport_code }}</p>
+                <p class="info-p-selected bar">-</p>
+                <p class="info-p-selected date">{{ inbound?.departure?.date | date:"EEE, d MMM · HH:mm" }}</p>
+              </div>
+              <div class="spacer"></div>
+              <div class="info-div-selected">
+                <svg class="info-svg-selected"><use href="./assets/svg/sprite.svg#circle"></use></svg>
+                <p class="info-p-selected airport">{{ inbound?.arrival?.airport_code }}</p>
+                <p class="info-p-selected bar">-</p>
+                <p class="info-p-selected date">{{ inbound?.arrival?.date | date:"EEE, d MMM · HH:mm" }}</p>
+              </div>
+            }
+
+            <div class="separator"></div>
+            @if (type() !== 'round trip' || selectedInboundFlight()) {
+              <button class="confirm-btn">Confirmar</button>
+            }
+          }
+        </div>
+      </div>
+    </main>
   }
-</div>
+}

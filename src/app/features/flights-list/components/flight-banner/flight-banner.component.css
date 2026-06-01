@@ -33,9 +33,44 @@
 
 .up-center-container {
   position: absolute;
-  top: calc(50% - 80px);
-  left: calc(50% - 150px);
+  top: 180px;
   z-index: 3;
   color: white;
   fill: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.banner-h2 {
+  font-size: 3.5rem;
+  text-align: center;
+  text-shadow: 0 0 5px #012301;
+}
+
+.banner-box {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.banner-p {
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 0 0 5px #012301;
+  margin-top: 8px;
+}
+
+.date {
+  font-size: 1.5rem;
+}
+
+.banner-svg {
+  width: 30px;
+  height: 30px;
 }
